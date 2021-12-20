@@ -1,30 +1,10 @@
+let input = require("fs").readFileSync("/dev/stdin").toString();
 
-let fs = require('fs');
+let answer = "";
 
-let input = fs.readFileSync('/dev/stdin').toString().split(' ');
-
-const num = +input
-for(let i=1; i<= num; i++) {
-    console.log(i);
+for (let a = 1; a <= input; a++) {
+  answer += a + "\n";
 }
+console.log(answer);
 
-const readline = require('readline');
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-let input = [];
-
-rl.on('line', function (line) {
-  input.push(line)
-})
-  .on('close', function () {
-      const num = +input[0];
-    for(let i=1; i<= num; i++) {
-        console.log(i);
-    }
-    
-    process.exit();
-});
+// 시간 초과로 고생한 문제..

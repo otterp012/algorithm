@@ -1,5 +1,2 @@
-
-let fs = require('fs');
-let input = fs.readFileSync('example.txt').toString().split(' ');
-let input = fs.readFileSync('/dev/stdin').toString().split(' ');
-console.log(Number(input[0]) / Number(input[1]))
+let input = require('fs').readFileSync('/dev/stdin').toString();
+let input = require('fs').readFileSync('example.txt').toString();
