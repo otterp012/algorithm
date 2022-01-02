@@ -18,4 +18,6 @@ let y // 옮겨가야할 자리
 
 function move(n, x, y,) {
     if(n === 0) return;
+
+    return 
 }

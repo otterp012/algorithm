@@ -1,8 +1,6 @@
 
 
-
-
-function reverse(str) {
+function isPalindrome(str) {
     let arr = str.split('');
     let answer = '';
     let tmp = ''
@@ -21,10 +19,9 @@ function reverse(str) {
 
     stop(arr);
     // 여기서는 재귀가 아닌 한번만 호출되는 것- 재귀의 시작점
-    return answer;
+    return answer === str
 
 }
 
-console.log(reverse('abc'));
-
+console.log(reverse('tacocat'));
 
