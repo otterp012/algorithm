@@ -1,10 +1,33 @@
 let input = require('fs').readFileSync('example.txt').toString().trim().split('\n');
 
-// let input = require('fs').readFileSync('/dev/stdin').toString().split('\n').map((el) => Number(el));
-input.shift();
+// let input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
+let m = +input[0].split(' ')[1];
+let arr = input[1].split(' ').map(el => Number(el));
 
-let arr = input.map((items) => items.split(' ').map(el=>Number(el)));
-console.log(arr);
+let x;
+let max = Number.MIN_SAFE_INTEGER;
+let answer;
 
-let sorted = arr.sort();
-console.log(sorted);
+for(let i=0; i<arr.length-2; i++) {
+    for(let j=i+1; j<arr.length-1; j++) {
+        for(let k=j+1; k<arr.length; k++) {
+            let x=arr[i] + arr[j] + arr[k];
+            if(x > max && x <= m) {
+                max = x;
+            }
+        }
+    }
+}
+console.log(max);
+
+
+// for(let i=0; i<set.size; i++) {
+
+//     if(min > Math.abs([...set][i] - m)) {
+//         min = Math.abs([...set][i] - m)
+//         answer = [...set][i];
+//     }
+
+// }
+
+// 이렇게 하니까 메모리 초과가 나왔다...
