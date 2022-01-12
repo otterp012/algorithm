@@ -104,3 +104,22 @@
     //     }
     //     return head;
     // };
+
+
+    var deleteDuplicates = function(head) {
+        let answer;
+        let temp;
+        let node = head;
+        while(node && node.next) {
+            // console.log(node.val === node.next.val);
+            // true / false
+            if(node.val === node.next.val) {
+                // 현재 node의 val과 node.next의 value가 같은 경우
+                node.next = node.next.next;
+            } else {
+                  node = node.next;   
+            }
+        }
+      
+        return head;
+    };
