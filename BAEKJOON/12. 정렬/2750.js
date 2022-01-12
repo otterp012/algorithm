@@ -11,4 +11,3 @@ let arr = input.sort((a,b) => (a-b));
 for(let x of arr){
     console.log(x);
 }
-
