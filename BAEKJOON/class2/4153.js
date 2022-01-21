@@ -1,4 +1,4 @@
-let input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n').map(items => items.split(' ').map(item => Number(item)));
+let input = require('fs').readFileSync('/dev/sdint').toString().trim().split('\n').map(items => items.split(' ').map(item => Number(item)));
 input.pop();
 
 function check(arr) {
