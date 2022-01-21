@@ -1,5 +1,3 @@
-const { lutimes } = require('fs');
-const { listenerCount } = require('process');
 
 let input = require('fs').readFileSync('example.txt').toString().trim();
 
@@ -57,10 +55,10 @@ class LinkedList {
 }
 
 const lists = new LinkedList();
+
 for(let i=1; i<=+input; i++) {
     lists.push(i);
 }
-
 
 while(lists.length !== 1) {
     lists.shift();
