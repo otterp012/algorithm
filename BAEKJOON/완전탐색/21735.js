@@ -1,8 +1,6 @@
 
 // const map = [0, 1, 3, 4, 5, 6, 7, 8, 10, 12, 14];
 
-const internal = require('stream');
-
 // let result =0;
 // let arr = [];
 

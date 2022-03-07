@@ -10,7 +10,7 @@ function getMaxInteager(arr) {
         for(let j=i+1; j<arr.length-1; j++) {
             for(let k=j+1; k<arr.length; k++) {
                 tmp = arr[i]+arr[k]+arr[j];
-                tmp = tmp > 100 ? tmp%100 : tmp%10;
+                tmp = tmp%10;
                 answer = Math.max(tmp, answer);
             }
         }

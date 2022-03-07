@@ -9,4 +9,4 @@ function solution(A, B, C) {
     else return (solution(A, B/2, C) * solution(A, B/2, C) * solution(A, 1, C)) % C;
 }
 
-console.log(solution(A, B, C))
+console.log(solution(A, B, C)            ) 
