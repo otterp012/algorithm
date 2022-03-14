@@ -1,4 +1,4 @@
-const input = require('fs').readFileSync('example.txt').toString().trim().split('\n');
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
 
 const N = +input.shift();
 const map = [[0,0], ...input.map((row) => row.split(' ').map(Number))];
