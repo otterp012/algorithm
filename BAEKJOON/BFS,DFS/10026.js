@@ -8,7 +8,7 @@ const N = +input.shift();
 const map = input.map((row) => row.split(''));
 const visited = {};
 
-// function bfs(x, y, target1, target2 = null) {
+// function bfs(x, y, target1, targetll) {
 //   const queue = [[x, y]];
 //   const result = [];
 //   visited[[x, y]] = true;
@@ -43,6 +43,8 @@ const visited = {};
 //     }
 //   }
 // }
+// RG
+// GR
 
 function bfs(x, y, obj, target1) {
   const queue = [[x, y]];
@@ -128,3 +130,4 @@ for (let i = 0; i < N; i++) {
 const answer2 = getAnswer(visited2, 'R') + b;
 
 console.log(answer1 + ' ' + answer2);
+
