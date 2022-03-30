@@ -1,5 +1,5 @@
 const input = require('fs')
-  .readFileSync('example.txt')
+  .readFileSync('../example.txt')
   .toString()
   .trim()
   .split('\n');
@@ -31,7 +31,9 @@ function getMap(i, j, N, M, R) {
     if (i === first && j === first) break;
   }
   queue.pop();
+  console.log(queue);
   let mapArr = queue.map((v) => (v = map[v[0]][v[1]]));
+  console.log(mapArr);
   let idx = R % mapArr.length;
 
   let tmp = mapArr.slice(mapArr.length - idx, mapArr.length);
@@ -44,7 +46,7 @@ function getMap(i, j, N, M, R) {
 }
 
 for (let i = 0; i < Math.floor(Math.min(N, M) / 2); i++) {
-  getMap(i, i, N - i, M - i, R);
+  console.log(getMap(i, i, N - i, M - i, R));
 }
 
 let anw = '';
@@ -52,4 +54,4 @@ answer.forEach((item) => {
   anw += item.join(' ') + '\n';
 });
 
-console.log(anw);
+// console.log(anw);
