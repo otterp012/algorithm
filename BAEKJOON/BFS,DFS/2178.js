@@ -1,40 +1,39 @@
+// 백준 2178 미로찾기
 
-const input = require('fs').readFileSync('example.txt').toString().trim().split('\n');
+const input = require("fs")
+  .readFileSync("../example.txt")
+  .toString()
+  .trim()
+  .split("\n");
 
+const [N, M] = input.shift().split(" ").map(Number);
+const map = input.map((v) => v.split("").map(Number));
+const dx = [-1, 0, 1, 0];
+const dy = [0, -1, 0, 1];
 
-const [N, M] = input.shift().split(' ').map(Number);
-const map = input.map((row) => row.split('').map(Number));
+const bfs = () => {
+  const queue = [[0, 0]];
+  const visited = {};
+  visited[[0, 0]] = true;
 
+  while (queue.length) {
+    const [curX, curY] = queue.shift();
 
-function bfs(x,y) {
-    const queue = [[x,y]];
-    const result = [];
-    const visisted = { };
-    visisted[[x,y]] = 1;
-    let dx = [0, 0, -1, 1];
-    let dy = [-1, 1, 0, 0];
+    for (let i = 0; i < 4; i++) {
+      let nx = curX + dx[i];
+      let ny = curY + dy[i];
 
-    while(queue.length) {
-        for(let i=0; i<queue.length; i++) {
-            let coord = queue.shift();
-            result.push(coord);
-            for(let j=0; j<4; j++) {
-                let nx = coord[0] + dx[j];
-                let ny = coord[1] + dy[j];
-
-                if( nx >= 0 &&
-                    ny >= 0 &&
-                    nx < N &&
-                    ny < M &&
-                    !visisted[[nx,ny]] &&
-                    map[nx][ny] === 1) {
-                        visisted[[nx,ny]] = visisted[coord]+1;
-                        queue.push([nx,ny]);
-                    }
-            }
-        }
+      if (nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
+      if (visited[[nx, ny]]) continue;
+      if (!map[nx][ny]) continue;
+      queue.push([nx, ny]);
+      visited[[nx, ny]] = true;
+      map[nx][ny] = map[curX][curY] + 1;
     }
-    return visisted;
-}
+  }
+};
 
-console.log(bfs(0,0));
+bfs();
+
+let max = Math.max(...map.map((v) => Math.max(...v)));
+console.log(max);
