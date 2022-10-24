@@ -20,3 +20,5 @@ function solution(people, limit) {
   }
   return answer;
 }
+
+// shift, pop 안쓰고 index만 사용하는 슬라이딩윈도우
