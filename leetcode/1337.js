@@ -37,10 +37,9 @@ const binarySearch = (arr = [0, 0, 0, 0, 0]) => {
     let mid = Math.floor(start + (end - start) / 2);
 
     if (arr[mid] === 1) {
-      tmp = mid + 1;
+      tmp = Math.max(tmp, mid + 1);
       start = mid + 1;
     } else {
-      tmp = mid;
       end = mid - 1;
     }
   }
