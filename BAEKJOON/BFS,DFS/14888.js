@@ -1,45 +1,46 @@
+const filePath = process.platform === "linux" ? "/dev/stdin" : "example.txt";
 const input = require("fs")
-  .readFileSync("./example.txt")
+  .readFileSync(filePath)
   .toString()
   .trim()
   .split("\n");
 
 const N = Number(input.shift());
-let [add, sub, mul, div] = input.pop().split(" ").map(Number);
-const board = input[0].split(" ").map(Number);
+const [map, commend] = input.map((v) => v.split(" ").map(Number));
 
 let max = Number.MIN_SAFE_INTEGER;
 let min = Number.MAX_SAFE_INTEGER;
-const dfs = (result, num) => {
-  if (num === N) {
+const dfs = (count, result) => {
+  if (count === N - 1) {
     max = Math.max(max, result);
     min = Math.min(min, result);
     return;
   }
+  for (let i = 0; i < 4; i++) {
+    if (!commend[i]) continue;
+    commend[i] -= 1;
+    if (i === 0) {
+      dfs(count + 1, result + map[count + 1]);
+    }
 
-  if (add > 0) {
-    add -= 1;
-    dfs(result + board[num], num + 1);
-    add += 1;
-  }
+    if (i === 1) {
+      dfs(count + 1, result - map[count + 1]);
+    }
 
-  if (sub > 0) {
-    sub -= 1;
-    dfs(result - board[num], num + 1);
-    sub += 1;
-  }
-  if (mul > 0) {
-    mul -= 1;
-    dfs(result * board[num], num + 1);
-    mul += 1;
-  }
-  if (div > 0) {
-    div -= 1;
-    dfs(Math.floor(result / board[num]), num + 1);
-    div += 1;
+    if (i === 2) {
+      dfs(count + 1, result * map[count + 1]);
+    }
+
+    if (i === 3) {
+      if (result < 0) {
+        let temp = Math.floor((result * -1) / map[count + 1]) * -1;
+        dfs(count + 1, temp);
+      } else dfs(count + 1, Math.floor(result / map[count + 1]));
+    }
+    commend[i] += 1;
   }
 };
 
-dfs(board[0], 1);
+dfs(0, map[0]);
 
 console.log(max + "\n" + min);
