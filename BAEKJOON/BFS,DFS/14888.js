@@ -44,3 +44,23 @@ const dfs = (count, result) => {
 dfs(0, map[0]);
 
 console.log(max + "\n" + min);
+
+const test = ["+", "+", "-", "*", "/"];
+
+const visited = {};
+const output = [];
+
+const dfsT = (cnt) => {
+  if (cnt === test.length) return console.log(output);
+
+  for (let i = 0; i < test.length; i++) {
+    if (visited[i]) continue;
+    visited[i] = true;
+    output.push(test[i]);
+    dfsT(cnt + 1);
+    visited[i] = false;
+    output.pop();
+  }
+};
+
+dfsT(0);
