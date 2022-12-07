@@ -46,7 +46,6 @@ const arr = Object.entries(timeMpa)
   })
   .map((record) => {
     const time = record[1];
-    console.log(time);
     if (time <= fees[0]) return fees[1];
     return fees[1] + Math.ceil((time - fees[0]) / fees[2]) * fees[3];
   });
