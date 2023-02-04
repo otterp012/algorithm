@@ -90,7 +90,6 @@ function solution(users, emoticons) {
   };
 
   dfs(0, 0);
-
   // users[0]이 구매한다면 이렇게
 
   const arr = Array.from({ length: result.length }, () =>
