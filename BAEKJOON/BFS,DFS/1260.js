@@ -29,7 +29,6 @@ for (const [s, e] of lists) {
 //   lists[list] = lists[list].sort((a, b) => a - b);
 // }
 
-console.log(newList);
 const dfs = (n) => {
   const visited = {};
   visited[n] = true;
